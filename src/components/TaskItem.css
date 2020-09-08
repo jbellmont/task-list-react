@@ -1,0 +1,22 @@
+.task-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: black solid 1px;
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.task-item-section-task-name {
+  flex-grow: 6;
+  text-align: center;
+}
+
+.task-item-section-due {
+  flex-grow: 1;
+}
+
+.task-item-section-complete {
+  flex-grow: 1;
+}
