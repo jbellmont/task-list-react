@@ -2,6 +2,7 @@ import React from 'react';
 import OptionsMenu from './OptionsMenu';
 import TaskList from './TaskList';
 import AddTask from './AddTask';
+import './App.css';
 
 class App extends React.Component {
   state = { 
@@ -26,6 +27,7 @@ class App extends React.Component {
       },
     ],
     addTaskVisible: false,
+    inputValue: "",
   };
 
   onShowAddTaskClick = () => {
@@ -39,9 +41,10 @@ class App extends React.Component {
       const updatedTaskList = state.tasks.concat(task);
       return { tasks: updatedTaskList };
     });
-
-    console.log(this.state);
   }
+
+  onSearchBarChange = (task) => this.setState( {inputValue: task} );
+  // Updates search bar value in App state
 
   onCompleteTaskButtonClick = (id) => {
     // Callback for when a user clicks on completed task button in the TaskItem component
@@ -72,23 +75,40 @@ class App extends React.Component {
   }
 
   render() {
+
+    const filteredTasks = 
+    // Creates a filtered array when Search Bar is in use
+      this.state.tasks.filter(task => {
+        return task.taskName.toLowerCase().includes(this.state.inputValue.toLowerCase());
+      });
+
     return (
-      <div className="ui container">
+      <div className="container-sm">
 
-        <h1 className="ui header">
-          <i className="share icon"></i>
-          <div className="content">
-          Task List
+        <div className="row">
+          <div className="col">
+            <h1>Task List</h1>
           </div>
-        </h1>
+        </div>
 
-        <OptionsMenu onShowAddTaskClick={this.onShowAddTaskClick} />
+          <OptionsMenu 
+            onShowAddTaskClick={this.onShowAddTaskClick} 
+            onSearchBarChange={this.onSearchBarChange}
+          />
+
         { this.state.addTaskVisible ? <AddTask onAddTaskClick={this.onAddTaskClick} /> : null }
-        <TaskList 
-          tasks={this.state.tasks} 
-          onCompleteTaskButtonClick={this.onCompleteTaskButtonClick}
-          onDeleteTaskButtonClick={this.onDeleteTaskButtonClick}
-        />
+        
+        <div className="row">
+          <div className="col">
+            <TaskList 
+              tasks={this.state.tasks} 
+              filteredTasks={filteredTasks}
+              inputValue={this.state.inputValue}
+              onCompleteTaskButtonClick={this.onCompleteTaskButtonClick}
+              onDeleteTaskButtonClick={this.onDeleteTaskButtonClick}
+            />
+          </div>
+        </div>
 
       </div>
     );

@@ -1,0 +1,21 @@
+.app-container {
+  background-color: blue;
+  height: 100vh;
+}
+
+.app-title-container {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.app-title-text {
+  font-size: 5rem;
+  color: #525252;
+}
+
+.app-title-container i {
+  color: #525252;
+}

@@ -14,21 +14,25 @@ const TaskItem = ({ taskName, dateDue, priority, tag, complete, deleted, onCompl
   };
 
   return (
-    <div className="task-item">
-      <div className="task-item-section-task-name">
+    <div className="row task-item align-middle">
+
+      <div className="col text-center">
         {taskName}
       </div>
-      <div className="task-item-section-due">
-        <button className="ui blue basic button">{dateDue}</button>
-        <button className="ui red basic button">{priority}</button>
-        <button className="ui green basic button">{tag}</button>
+
+      <div className="col text-center">
+        <button className="btn btn-info">{dateDue}</button>
+        <button className="btn btn-secondary">{priority}</button>
+        <button className="btn btn-warning">{tag}</button>
       </div>
-      <div className="task-item-section-complete">
-        <div className="ui icon buttons">
-          <button className="ui button" onClick={onCompleteTaskButtonClickCallBack}>✓</button>
-          <button className="ui button" onClick={onDeleteTaskButtonClickCallBack}>✗</button>
+
+      <div className="col text-center">
+        <div className="btn-group" role="group">
+          <button type="button" className="btn btn-secondary" onClick={onCompleteTaskButtonClickCallBack}>✓</button>
+          <button type="button" className="btn btn-secondary" onClick={onDeleteTaskButtonClickCallBack}>✗</button>
         </div>
       </div>
+
     </div>
   );
 }

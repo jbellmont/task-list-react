@@ -1,4 +1,6 @@
 import React from 'react';
+import SearchBar from './SearchBar';
+import './OptionsMenu.css'
 
 const OptionsMenu = (props) => {
 
@@ -8,31 +10,29 @@ const OptionsMenu = (props) => {
 
 
   return (
-    <div className="ui three column centered grid">
+    <div className="row text-center options-menu">
 
-      <div className='column'>
-        <button className="ui basic button positive" onClick={onShowAddTaskClick}>
-          <i className="icon sticky note"></i>
+      <div className='col-sm-4'>
+        <button className="btn btn-primary" onClick={onShowAddTaskClick}>
           Add task
         </button>
       </div>
 
-      <div className='column'>
-        <form className="ui search">
-          <div className="ui icon input">
-            <input className="prompt" type="text" placeholder="Search task" />
-            <i className="search icon"></i>
-          </div>
-        </form>
+      <div className='col-sm-4'>
+        <SearchBar onSearchBarChange={props.onSearchBarChange}/>
       </div>
 
-      <div className='column'>
-        Sort by:
-        <select className="ui dropdown">
-          <option value="">Date</option>
-          <option value="1">Priority</option>
-          <option value="2">Tag</option>
-        </select>
+      <div className='col-sm-4'>
+        <div className="dropdown">
+          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort tasks by
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a className="dropdown-item" href="#">Due date</a>
+            <a className="dropdown-item" href="#">Priority</a>
+            <a className="dropdown-item" href="#">Tag</a>
+          </div>
+        </div>
       </div>
 
     </div>
