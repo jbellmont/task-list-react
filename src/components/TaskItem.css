@@ -6,22 +6,19 @@
   border: #D4D4D5 solid 1px;
   border-radius: 5px;
   margin-bottom: 20px;
-  transition: box-shadow 0.2s;
+  transition: all 0.2s;
 }
 
 .task-item:hover {
   box-shadow: rgba(0, 0, 0, 0.233) 0px 0px 3px;
 }
 
-/* .task-item-section-task-name {
-  flex-grow: 6;
-  text-align: center;
+.id {
+  margin-right: 10px;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
-.task-item-section-due {
-  flex-grow: 1;
+.task-name {
+  font-weight: 600;
 }
-
-.task-item-section-complete {
-  flex-grow: 1;
-} */

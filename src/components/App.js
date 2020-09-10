@@ -30,6 +30,24 @@ class App extends React.Component {
     inputValue: "",
   };
 
+  countNumberOfCurrentTasks = () => {
+    // counts the number of active tasks and uses it to display number by H1 heading
+    const completedOrDeletedTasks = this.state.tasks.filter(task => {
+      if (task.complete || task.deleted) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    return completedOrDeletedTasks.length;
+  }
+
+
+    //********************* //
+   // Options Menu methods //
+  // ******************** //
+
   onShowAddTaskClick = () => {
     // Makes the Add Task component visible
     this.state.addTaskVisible ? this.setState({ addTaskVisible: false }) : this.setState({ addTaskVisible: true });
@@ -45,6 +63,72 @@ class App extends React.Component {
 
   onSearchBarChange = (task) => this.setState( {inputValue: task} );
   // Updates search bar value in App state
+
+  onSortByDateClick = () => {
+    // Sorts task list by date, with most urgent first
+    this.setState(state => {
+      const sortedTaskList = state.tasks.sort((a,b) => {
+        return new Date(a.dateDue) - new Date(b.dateDue);
+      });
+      return sortedTaskList;
+    });
+  }
+
+  onSortByPriorityClick = () => {
+    // Sorts task list by priority, by High->Medium->Low descending order 
+    this.setState(state => {
+      const sortedTaskList = state.tasks.sort((a,b) => {
+
+        if (a.priority === "High" && b.priority === "Medium") {
+          return -1;
+        } else if (a.priority === "High" && b.priority === "Low") {
+          return -1;
+        } else if (a.priority === "Medium" && b.priority === "Low") {
+          return -1;
+        } else if (a.priority === "Medium" && b.priority === "Medium") {
+          return 0;
+        } else if (a.priority === "High" && b.priority === "High") {
+          return 0;
+        } else if (a.priority === "Low" && b.priority === "Low") {
+          return 0;
+        } else if (a.priority === "Medium" && b.priority === "High") {
+          return 1;
+        } else if (a.priority === "Low" && b.priority === "Medium") {
+          return 1;
+        } else if (a.priority === "Low" && b.priority === "High") {
+          return 1;
+        }
+
+      });
+      return sortedTaskList;
+    });
+  }
+
+  onSortByTagClick = () => {
+    // Sorts task list by date, with most urgent first
+    this.setState(state => {
+      const sortedTaskList = state.tasks.sort((a,b) => {
+        let tagA = a.tag.toUpperCase(); // ignore upper and lowercase
+        let tagB = b.tag.toUpperCase(); // ignore upper and lowercase
+
+        if (tagA < tagB) {
+          return -1;
+        } else if (tagA > tagB) {
+          return 1;
+        } else {
+          return 0;
+        }
+
+      });
+      
+      return sortedTaskList;
+    });
+  }
+
+  
+    //******************//
+   // TaskItem methods //
+  // **************** //
 
   onCompleteTaskButtonClick = (id) => {
     // Callback for when a user clicks on completed task button in the TaskItem component
@@ -74,6 +158,11 @@ class App extends React.Component {
     })
   }
 
+
+    //******************//
+   //  Render method   //
+  // **************** //
+
   render() {
 
     const filteredTasks = 
@@ -87,13 +176,17 @@ class App extends React.Component {
 
         <div className="row">
           <div className="col">
-            <h1>Task List</h1>
+            <h1><i class="fas fa-tasks task-icon"></i>Task List<sup><span className="badge badge-pill badge-warning no-of-tasks">{this.countNumberOfCurrentTasks()}</span></sup></h1>
           </div>
         </div>
 
           <OptionsMenu 
-            onShowAddTaskClick={this.onShowAddTaskClick} 
+            onShowAddTaskClick={this.onShowAddTaskClick}
+            onShowCompletedClick={this.onShowCompletedClick} 
             onSearchBarChange={this.onSearchBarChange}
+            onSortByDateClick={this.onSortByDateClick}
+            onSortByPriorityClick={this.onSortByPriorityClick}
+            onSortByTagClick={this.onSortByTagClick}
           />
 
         { this.state.addTaskVisible ? <AddTask onAddTaskClick={this.onAddTaskClick} /> : null }

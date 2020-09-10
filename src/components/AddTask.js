@@ -6,11 +6,13 @@ class AddTask extends React.Component {
     id: 3,
     taskName: "",
     dateDue: "",
-    priority: "",
+    priority: "Low",
     tag: "",
     complete: false,
     deleted: false,
   }
+
+  onFormSubmit = (e) => { e.preventDefault() };
 
   onAddTaskClick = (e) => {
     // e.preventDefault();
@@ -25,24 +27,30 @@ class AddTask extends React.Component {
 
         <h4 className="">Enter task details</h4>
               
-          <form>
+          <form onSubmit={this.onFormSubmit}>
             <label>Task name: 
                 <br />
-                <input type="text" className="form-control" onChange={ (e) => this.setState({ taskName: e.target.value}) }/>
+                <input 
+                  type="text" 
+                  required 
+                  minlength="1"
+                  maxlength="25"
+                  className="form-control" 
+                  onChange={ (e) => this.setState({ taskName: e.target.value}) }/>
             </label>
 
             <br />
 
             <label>Date due: 
                 <br />
-                <input type="date" className="form-control" onChange={ (e) => this.setState({ dateDue: e.target.value}) } />
+                <input type="date" required className="form-control" onChange={ (e) => this.setState({ dateDue: e.target.value}) } />
             </label>
 
             <br />
 
             <label>Priority: 
               <br />
-              <select className="form-control" onChange={ (e) => this.setState({ priority: e.target.value}) }>
+              <select className="form-control" required onChange={ (e) => this.setState({ priority: e.target.value}) }>
                 <option>Low</option>
                 <option>Medium</option>
                 <option>High</option>
@@ -54,13 +62,19 @@ class AddTask extends React.Component {
             <label>Tag: 
               <br />
               <div className="">
-                <input type="text" className="form-control" onChange={ (e) => this.setState({ tag: e.target.value}) }/>
+                <input 
+                  type="text" 
+                  required 
+                  minlength="1"
+                  maxlength="15"
+                  className="form-control" 
+                  onChange={ (e) => this.setState({ tag: e.target.value}) }/>
               </div>
             </label>
 
             <br />
 
-            <button className="btn btn-success" onClick={this.onAddTaskClick}>
+            <button className="btn btn-primary" onClick={this.onAddTaskClick}>
               Add task
             </button>
 

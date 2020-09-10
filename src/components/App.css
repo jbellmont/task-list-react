@@ -1,21 +1,18 @@
-.app-container {
-  background-color: blue;
-  height: 100vh;
+h1 {
+  margin: 25px 0px 25px 0px;
 }
 
-.app-title-container {
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
+.task-icon {
+  font-size: 1.8rem;
+  color: grey;
+  margin-right: 10px;
 }
 
-.app-title-text {
-  font-size: 5rem;
-  color: #525252;
+.no-of-tasks {
+  font-size: 0.75rem;
+  margin-left: 5px;
 }
 
-.app-title-container i {
-  color: #525252;
+.no-of-tasks:hover {
+  cursor: default;
 }
