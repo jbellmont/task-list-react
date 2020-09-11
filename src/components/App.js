@@ -9,7 +9,7 @@ class App extends React.Component {
     tasks: [
       {
         id: 1,
-        taskName: "Make report",
+        taskName: "Marketing report",
         dateDue: "2020-10-01",
         priority: "High",
         tag: "marketing",
@@ -18,10 +18,19 @@ class App extends React.Component {
       },
       {
         id: 2,
-        taskName: "Build deck",
+        taskName: "Organise meeting with vendors",
         dateDue: "2020-11-29",
         priority: "Low",
         tag: "logistics",  
+        complete: false,
+        deleted: false,      
+      },
+      {
+        id: 3,
+        taskName: "Meet James for coffee",
+        dateDue: "2020-12-01",
+        priority: "Medium",
+        tag: "networking",  
         complete: false,
         deleted: false,      
       },
@@ -176,7 +185,7 @@ class App extends React.Component {
 
         <div className="row">
           <div className="col">
-            <h1><i class="fas fa-tasks task-icon"></i>Task List<sup><span className="badge badge-pill badge-warning no-of-tasks">{this.countNumberOfCurrentTasks()}</span></sup></h1>
+            <h1><i className="fas fa-tasks task-icon"></i>Task List<sup><span className="badge badge-pill badge-warning no-of-tasks">{this.countNumberOfCurrentTasks()}</span></sup></h1>
           </div>
         </div>
 

@@ -1,17 +1,39 @@
-.options-menu {
-  background-color: #525252;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  margin-bottom: 20px;
+@media(min-width: 320px) {
+  .options-menu {
+    background-color: #525252;
+    height: 120px;
+    /* justify-content: center; */
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .add-task-button {
+    width: 125px;
+  }
+
+  .add-task-column {
+    text-align: left;
+  }
 }
 
-.options-menu:hover {
-  box-shadow: rgba(0, 0, 0, 0.233) 0px 0px 7.5px;
-}
 
-.options-menu-button {
-  margin-right: 10px;
+@media(min-width: 768px) {
+
+  .options-menu {
+    background-color: #525252;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .options-menu:hover {
+    box-shadow: rgba(0, 0, 0, 0.233) 0px 0px 7.5px;
+  }
+
+  .options-menu-button {
+    margin-right: 10px;
+  }
 }

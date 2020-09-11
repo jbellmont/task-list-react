@@ -17,18 +17,18 @@ const OptionsMenu = (props) => {
   return (
     <div className="row text-center options-menu">
 
-      <div className='col-sm-4'>
-        <button className="btn btn-primary options-menu-button" onClick={onShowAddTaskClick}>
+      <div className='col-sm'>
+        <SearchBar onSearchBarChange={props.onSearchBarChange} />
+      </div>
+
+      <div className='col add-task-column'>
+        <button className="btn btn-primary add-task-button" onClick={onShowAddTaskClick}>
           + Add task
         </button>
         
       </div>
 
-      <div className='col-sm-4'>
-        <SearchBar onSearchBarChange={props.onSearchBarChange} />
-      </div>
-
-      <div className='col-sm-4'>
+      <div className='col text-right'>
         <SortTasks 
           onSortByDateClick={props.onSortByDateClick} 
           onSortByPriorityClick={props.onSortByPriorityClick}

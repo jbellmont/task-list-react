@@ -3,7 +3,7 @@ import './AddTask.css';
 
 class AddTask extends React.Component {
   state = {
-    id: 3,
+    id: 4,
     taskName: "",
     dateDue: "",
     priority: "Low",
@@ -33,8 +33,8 @@ class AddTask extends React.Component {
                 <input 
                   type="text" 
                   required 
-                  minlength="1"
-                  maxlength="25"
+                  minLength="1"
+                  maxLength="25"
                   className="form-control" 
                   onChange={ (e) => this.setState({ taskName: e.target.value}) }/>
             </label>
@@ -65,8 +65,8 @@ class AddTask extends React.Component {
                 <input 
                   type="text" 
                   required 
-                  minlength="1"
-                  maxlength="15"
+                  minLength="1"
+                  maxLength="15"
                   className="form-control" 
                   onChange={ (e) => this.setState({ tag: e.target.value}) }/>
               </div>

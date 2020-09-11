@@ -27,21 +27,24 @@ const TaskItem = ({ taskName, dateDue, priority, tag, complete, deleted, onCompl
   return (
     <div className="row task-item align-middle" style={completedBackgroundColor}>
 
-      <div className="col text-center" style={completedStrikeThrough}>
+      <div className="col-sm-1 id-column padding" style={completedStrikeThrough}>
         <span className="badge badge-pill badge-warning id" style={completedStrikeThrough}>#{id}</span>
+      </div>
+
+      <div className="col-sm-4 text-center task-name-column padding" style={completedStrikeThrough}>
         <span className="task-name">{taskName}</span>
       </div>
 
-      <div className="col text-center middle-buttons">
-        <button className="btn btn-info">{dateDue}</button>
-        <button className= {`btn btn-${priorityButtonColour}`}>{priority}</button>
-        <button className="btn btn-dark">{tag}</button>
+      <div className="col-sm-6 text-center middle-buttons padding">
+        <button className="btn btn-info btn-sm">{dateDue}</button>
+        <button className= {`btn btn-${priorityButtonColour} btn-sm`}>{priority}</button>
+        <button className="btn btn-dark btn-sm">{tag}</button>
       </div>
 
-      <div className="col text-center">
+      <div className="col-sm-1 text-center padding">
         <div className="btn-group" role="group">
-          <button type="button" className="btn btn-secondary complete-delete" onClick={onCompleteTaskButtonClickCallBack}>✓</button>
-          <button type="button" className="btn btn-secondary complete-delete" onClick={onDeleteTaskButtonClickCallBack}>✗</button>
+          <button type="button" className="btn btn-secondary complete-delete btn-sm" onClick={onCompleteTaskButtonClickCallBack}>✓</button>
+          <button type="button" className="btn btn-secondary complete-delete btn-sm" onClick={onDeleteTaskButtonClickCallBack}>✗</button>
         </div>
       </div>
 
