@@ -15,9 +15,9 @@ class AddTask extends React.Component {
   onFormSubmit = (e) => { e.preventDefault() };
 
   onAddTaskClick = (e) => {
-    // e.preventDefault();
     this.setState({ id: this.state.id + 1 });
     this.props.onAddTaskClick(this.state);
+    this.props.animateNoOfTasks();
   }
  
   render () {

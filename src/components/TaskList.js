@@ -19,8 +19,13 @@ const TaskList = (props) => {
           deleted={task.deleted}
           key={task.id}
           id={task.id}
+          onTaskNameUpdateChange={props.onTaskNameUpdateChange}
+          onDateUpdateChange={props.onDateUpdateChange}
+          onPriorityUpdateChange={props.onPriorityUpdateChange}
+          onTagUpdateChange={props.onTagUpdateChange}
           onCompleteTaskButtonClick={props.onCompleteTaskButtonClick}
           onDeleteTaskButtonClick={props.onDeleteTaskButtonClick}
+          animateNoOfTasks={props.animateNoOfTasks}
         />
       );
     }

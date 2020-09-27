@@ -52,6 +52,12 @@ class App extends React.Component {
     return completedOrDeletedTasks.length;
   }
 
+  animateNoOfTasks = () => {
+    const noOfTasksIcon = document.querySelector('.no-of-tasks');
+    noOfTasksIcon.classList.add('animate-no-of-tasks');
+    setTimeout(() => noOfTasksIcon.classList.remove('animate-no-of-tasks'), 500);
+  }
+
 
     //********************* //
    // Options Menu methods //
@@ -139,6 +145,63 @@ class App extends React.Component {
    // TaskItem methods //
   // **************** //
 
+  // Editing task detail methods 
+
+  onTaskNameUpdateChange = (id, newTask) => {
+    this.setState(state => {
+      const updatedTaskList = state.tasks.map((task) => {
+        if (task.id === id) {
+          return Object.assign({}, task, {taskName: newTask});
+        } else {
+          return task;
+        }
+      });
+      return { tasks: updatedTaskList };
+    });
+  }
+
+  onDateUpdateChange = (id, newDate) => {
+    this.setState(state => {
+      const updatedTaskList = state.tasks.map((task) => {
+        if (task.id === id) {
+          return Object.assign({}, task, {dateDue: newDate});
+        } else {
+          return task;
+        }
+      });
+      return { tasks: updatedTaskList };
+    });
+  }
+
+  onPriorityUpdateChange = (id, newPriority) => {
+    this.setState(state => {
+      const updatedTaskList = state.tasks.map((task) => {
+        if (task.id === id) {
+          return Object.assign({}, task, {priority: newPriority});
+        } else {
+          return task;
+        }
+      });
+      return { tasks: updatedTaskList };
+    });
+  }
+
+  onTagUpdateChange = (id, newTag) => {
+    this.setState(state => {
+      const updatedTaskList = state.tasks.map((task) => {
+        if (task.id === id) {
+          return Object.assign({}, task, {tag: newTag});
+        } else {
+          return task;
+        }
+      });
+      return { tasks: updatedTaskList };
+    });
+  }
+
+
+  // Completing and Deleting task methods 
+
   onCompleteTaskButtonClick = (id) => {
     // Callback for when a user clicks on completed task button in the TaskItem component
     this.setState(state => {
@@ -198,7 +261,7 @@ class App extends React.Component {
             onSortByTagClick={this.onSortByTagClick}
           />
 
-        { this.state.addTaskVisible ? <AddTask onAddTaskClick={this.onAddTaskClick} /> : null }
+        { this.state.addTaskVisible ? <AddTask onAddTaskClick={this.onAddTaskClick} animateNoOfTasks={this.animateNoOfTasks} /> : null }
         
         <div className="row">
           <div className="col">
@@ -206,8 +269,13 @@ class App extends React.Component {
               tasks={this.state.tasks} 
               filteredTasks={filteredTasks}
               inputValue={this.state.inputValue}
+              onTaskNameUpdateChange={this.onTaskNameUpdateChange}
+              onDateUpdateChange={this.onDateUpdateChange}
+              onPriorityUpdateChange={this.onPriorityUpdateChange}
+              onTagUpdateChange={this.onTagUpdateChange}
               onCompleteTaskButtonClick={this.onCompleteTaskButtonClick}
               onDeleteTaskButtonClick={this.onDeleteTaskButtonClick}
+              animateNoOfTasks={this.animateNoOfTasks}
             />
           </div>
         </div>
