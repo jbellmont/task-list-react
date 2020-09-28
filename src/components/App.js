@@ -52,11 +52,27 @@ class App extends React.Component {
     return completedOrDeletedTasks.length;
   }
 
+
+    //********************* //
+   // Title methods        //
+  // ******************** //
+
+  componentDidMount = () => {
+    // Stops default text highlighting
+    const appTitleDOM = document.querySelector('h1');
+    const noOfTasksIconDOM = document.querySelector('.no-of-tasks');
+    appTitleDOM.addEventListener('mousedown', (e) => e.preventDefault());
+    noOfTasksIconDOM.addEventListener('mousedown', (e) => e.preventDefault());
+  }
+
   animateNoOfTasks = () => {
+    // Adds/removes a class for the popping animation
     const noOfTasksIcon = document.querySelector('.no-of-tasks');
     noOfTasksIcon.classList.add('animate-no-of-tasks');
     setTimeout(() => noOfTasksIcon.classList.remove('animate-no-of-tasks'), 500);
   }
+
+
 
 
     //********************* //
@@ -264,7 +280,7 @@ class App extends React.Component {
         { this.state.addTaskVisible ? <AddTask onAddTaskClick={this.onAddTaskClick} animateNoOfTasks={this.animateNoOfTasks} /> : null }
         
         <div className="row">
-          <div className="col">
+          <div className="col task-list-container">
             <TaskList 
               tasks={this.state.tasks} 
               filteredTasks={filteredTasks}

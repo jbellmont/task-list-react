@@ -1,7 +1,7 @@
 import React from 'react';
 import './TaskItem.css';
 
-const TaskItem = ({ taskName, dateDue, priority, tag, complete, deleted, onCompleteTaskButtonClick, id, onDeleteTaskButtonClick, onTaskNameUpdateChange, onDateUpdateChange, onPriorityUpdateChange, onTagUpdateChange, animateNoOfTasks}) => {
+const TaskItem = ({ taskName, index, dateDue, priority, tag, complete, deleted, onCompleteTaskButtonClick, id, onDeleteTaskButtonClick, onTaskNameUpdateChange, onDateUpdateChange, onPriorityUpdateChange, onTagUpdateChange, animateNoOfTasks}) => {
 
   // Editing existing task callbacks
 
@@ -58,7 +58,7 @@ const TaskItem = ({ taskName, dateDue, priority, tag, complete, deleted, onCompl
     <div className="row task-item align-middle" style={completedBackgroundColor}>
 
       <div className="col-sm-1 id-column padding" style={completedStrikeThrough}>
-        <span className="badge badge-pill badge-warning id" style={completedStrikeThrough}>#{id}</span>
+        <span className="badge badge-pill badge-warning id" style={completedStrikeThrough}>#{index}</span>
       </div>
 
       <div className="col-sm-4 text-center task-name-column padding">
@@ -72,20 +72,20 @@ const TaskItem = ({ taskName, dateDue, priority, tag, complete, deleted, onCompl
         />
       </div>
 
-      <div className="col-sm-6 text-center middle-buttons padding">
+      <div className="col-sm-5 text-center padding">
         {/* Date button */}
         <input 
           type="date"
           value={dateDue}
           onChange={onDateUpdateChangeCallBack}
-          className="btn btn-info btn-sm"
+          className="btn btn-info btn-sm middle-button date-button"
         />
 
         {/* Priority button*/}  
         <select 
           value={priority}
           onChange={onPriorityUpdateChangeCallBack}
-          className={`btn btn-${priorityButtonColour} btn-sm`}
+          className={`btn btn-${priorityButtonColour} btn-sm middle-button`}
         >
           <option>Low</option>
           <option>Medium</option>
@@ -97,14 +97,12 @@ const TaskItem = ({ taskName, dateDue, priority, tag, complete, deleted, onCompl
           type="text" 
           value={tag} 
           maxLength="15"
-          className="btn btn-dark btn-sm"
+          className="btn btn-dark btn-sm middle-button"
           onChange={onTagUpdateChangeCallBack}
         />
-
-
       </div>
 
-      <div className="col-sm-1 text-center padding">
+      <div className="col-sm-2 text-center padding">
         <div className="btn-group" role="group">
           <button type="button" className="btn btn-secondary complete-delete btn-sm" onClick={onCompleteTaskButtonClickCallBack}>✓</button>
           <button type="button" className="btn btn-secondary complete-delete btn-sm" onClick={onDeleteTaskButtonClickCallBack}>✗</button>

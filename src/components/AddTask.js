@@ -15,6 +15,9 @@ class AddTask extends React.Component {
   onFormSubmit = (e) => { e.preventDefault() };
 
   onAddTaskClick = (e) => {
+    if (!this.state.taskName || !this.state.dateDue || !this.state.tag) {
+      return;
+    }
     this.setState({ id: this.state.id + 1 });
     this.props.onAddTaskClick(this.state);
     this.props.animateNoOfTasks();
@@ -74,7 +77,7 @@ class AddTask extends React.Component {
 
             <br />
 
-            <button className="btn btn-primary" onClick={this.onAddTaskClick}>
+            <button type="submit" className="btn btn-primary" onClick={this.onAddTaskClick}>
               Add task
             </button>
 

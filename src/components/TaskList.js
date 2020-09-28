@@ -7,8 +7,10 @@ const TaskList = (props) => {
   // 
   const taskListToUse = (props.inputValue === "") ? props.tasks : props.filteredTasks;
 
-  const renderedTaskList = taskListToUse.map((task) => {
-    if (task.deleted === false) {
+  const notDeletedTasks = taskListToUse.filter(item => !item.deleted);
+
+  const renderedTaskList = notDeletedTasks.map((task, index) => {
+    if (!task.deleted) {
       return (
         <TaskItem 
           taskName={task.taskName}
@@ -19,6 +21,7 @@ const TaskList = (props) => {
           deleted={task.deleted}
           key={task.id}
           id={task.id}
+          index={index + 1}
           onTaskNameUpdateChange={props.onTaskNameUpdateChange}
           onDateUpdateChange={props.onDateUpdateChange}
           onPriorityUpdateChange={props.onPriorityUpdateChange}
@@ -33,7 +36,7 @@ const TaskList = (props) => {
 
   // Component render
   return (
-    <div className="ui list task-list-container">
+    <div className="row task-list-container">
       {renderedTaskList}
     </div>
   );
