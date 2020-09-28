@@ -55,13 +55,13 @@ const TaskItem = ({ taskName, index, dateDue, priority, tag, complete, deleted, 
 
 
   return (
-    <div className="row task-item align-middle" style={completedBackgroundColor}>
+    <div className="row task-item align-middle no-gutters" style={completedBackgroundColor}>
 
-      <div className="col-sm-1 id-column padding" style={completedStrikeThrough}>
+      <div className="col-md-1 id-column padding" style={completedStrikeThrough}>
         <span className="badge badge-pill badge-warning id" style={completedStrikeThrough}>#{index}</span>
       </div>
 
-      <div className="col-sm-4 text-center task-name-column padding">
+      <div className="col-md-3 task-name-column text-center padding">
         <input 
           type="text" 
           value={taskName} 
@@ -72,42 +72,47 @@ const TaskItem = ({ taskName, index, dateDue, priority, tag, complete, deleted, 
         />
       </div>
 
-      <div className="col-sm-5 text-center padding">
-        {/* Date button */}
-        <input 
-          type="date"
-          value={dateDue}
-          onChange={onDateUpdateChangeCallBack}
-          className="btn btn-info btn-sm middle-button date-button"
-        />
+      {/* column 5 */}
+        <div className="col-md-3 text-center padding">
+          {/* Date button */}
+          <input 
+            type="date"
+            value={dateDue}
+            onChange={onDateUpdateChangeCallBack}
+            className="btn btn-info btn-sm middle-button date-button"
+          />
+        </div>
 
         {/* Priority button*/}  
-        <select 
-          value={priority}
-          onChange={onPriorityUpdateChangeCallBack}
-          className={`btn btn-${priorityButtonColour} btn-sm middle-button`}
-        >
-          <option>Low</option>
-          <option>Medium</option>
-          <option>High</option>
-        </select>
-
-        {/* Tag button */}
-        <input 
-          type="text" 
-          value={tag} 
-          maxLength="15"
-          className="btn btn-dark btn-sm middle-button"
-          onChange={onTagUpdateChangeCallBack}
-        />
-      </div>
-
-      <div className="col-sm-2 text-center padding">
-        <div className="btn-group" role="group">
-          <button type="button" className="btn btn-secondary complete-delete btn-sm" onClick={onCompleteTaskButtonClickCallBack}>✓</button>
-          <button type="button" className="btn btn-secondary complete-delete btn-sm" onClick={onDeleteTaskButtonClickCallBack}>✗</button>
+        <div className="col-md-2 text-center padding">
+          <select 
+            value={priority}
+            onChange={onPriorityUpdateChangeCallBack}
+            className={`btn btn-${priorityButtonColour} btn-sm middle-button`}
+          >
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
         </div>
-      </div>
+
+        <div className="col-md-2 text-center padding">
+          {/* Tag button */}
+          <input 
+            type="text" 
+            value={tag} 
+            maxLength="15"
+            className="btn btn-dark btn-sm middle-button"
+            onChange={onTagUpdateChangeCallBack}
+          />
+        </div>
+
+        <div className="col-md-1 text-center padding">
+          <div className="btn-group" role="group">
+            <button type="button" className="btn btn-secondary complete-delete btn-sm" onClick={onCompleteTaskButtonClickCallBack}>✓</button>
+            <button type="button" className="btn btn-secondary complete-delete btn-sm" onClick={onDeleteTaskButtonClickCallBack}>✗</button>
+          </div>
+        </div>
 
     </div>
   );
