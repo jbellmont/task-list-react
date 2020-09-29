@@ -73,7 +73,8 @@ const TaskItem = ({ taskName, index, dateDue, priority, tag, complete, deleted, 
       </div>
 
       {/* column 5 */}
-        <div className="col-md-3 text-center padding">
+        {/* <div className="col-md-3 text-center padding"> */}
+        <div className="col-md-7 middle-column padding">
           {/* Date button */}
           <input 
             type="date"
@@ -81,10 +82,10 @@ const TaskItem = ({ taskName, index, dateDue, priority, tag, complete, deleted, 
             onChange={onDateUpdateChangeCallBack}
             className="btn btn-info btn-sm middle-button date-button"
           />
-        </div>
+        {/* </div> */}
 
         {/* Priority button*/}  
-        <div className="col-md-2 text-center padding">
+        {/* <div className="col-md-2 text-center padding"> */}
           <select 
             value={priority}
             onChange={onPriorityUpdateChangeCallBack}
@@ -94,9 +95,9 @@ const TaskItem = ({ taskName, index, dateDue, priority, tag, complete, deleted, 
             <option>Medium</option>
             <option>High</option>
           </select>
-        </div>
+        {/* </div> */}
 
-        <div className="col-md-2 text-center padding">
+        {/* <div className="col-md-2 text-center padding"> */}
           {/* Tag button */}
           <input 
             type="text" 

@@ -31,6 +31,8 @@ const TaskList = (props) => {
           animateNoOfTasks={props.animateNoOfTasks}
         />
       );
+    } else {
+      return null;
     }
   });
 

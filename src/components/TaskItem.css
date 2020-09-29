@@ -1,13 +1,12 @@
 @media(min-width: 320px) { /* Mobile */
   .task-item {
-    height: 250px;
+    height: 175px;
     margin: 0px 1px 20px 1px;
     align-items: center;
     color: #525252;
     border: #D4D4D5 solid 1px;
     border-left: 0px;
     border-right: 0px;
-    /* border-radius: 5px; */
     transition: all 0.2s;
     width: 100%;
   }
@@ -42,6 +41,10 @@
     border-radius: 5px;
   }
 
+  .middle-column {
+    text-align: center;
+  }
+
   .middle-button {
     margin-right: 1px;
     margin-bottom: 1px;
@@ -63,6 +66,7 @@
     height: 30px;
   }
 }
+
 
 @media(min-width: 768px) { /* Tablet */
   .task-item {
@@ -94,6 +98,14 @@
     margin-left: 5px;
   }
 
+  .middle-column {
+    text-align: right;
+  }
+
+  .middle-button {
+    margin-bottom: 0px;
+  }
+
   .date-button {
     margin-left: 5px;
   }
@@ -101,5 +113,61 @@
 }
 
 
+@media(min-width: 1024px) { /* Laptop */
+
+  .id {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .task-name {
+    font-size: 1rem;
+  }
+
+  .middle-button {
+    font-size: 1rem;
+    width: 100px;
+    margin-right: 5px;
+    height: 35px;
+  }
+  
+  .date-button {
+    width: 160px;
+  }
+
+  .complete-delete {
+    height: 35px;
+  }
+
+}
+
+@media (min-width: 2560px) { /* Retina screen */
+  .task-item {
+    height: 150px;
+  }
+
+  .id {
+    font-size: 0.9rem;
+  }
+
+  .task-name {
+    width: 600px;
+    margin: 0px;
+  }
+
+  .middle-button {
+    width: 210px;
+    height: 70px;
+  }
+
+  .date-button {
+    width: 300px;
+  }
+
+  .complete-delete {
+    height: 70px;
+    margin: 0px;
+  }
+}
 
 

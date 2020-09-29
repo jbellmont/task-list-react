@@ -9,11 +9,6 @@ const OptionsMenu = (props) => {
     props.onShowAddTaskClick();
   };
 
-  const onShowCompletedClick = () => {
-    props.onShowCompletedClick();
-  }
-
-
   return (
     <div className="row text-center options-menu">
 

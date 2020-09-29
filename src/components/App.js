@@ -69,10 +69,11 @@ class App extends React.Component {
     // Adds/removes a class for the popping animation
     const noOfTasksIcon = document.querySelector('.no-of-tasks');
     noOfTasksIcon.classList.add('animate-no-of-tasks');
-    setTimeout(() => noOfTasksIcon.classList.remove('animate-no-of-tasks'), 500);
+    setTimeout(() => {
+      noOfTasksIcon.classList.remove('animate-no-of-tasks');
+      // popFX.pause();
+    }, 500);
   }
-
-
 
 
     //********************* //
@@ -128,6 +129,8 @@ class App extends React.Component {
           return 1;
         } else if (a.priority === "Low" && b.priority === "High") {
           return 1;
+        } else {
+          return 0;
         }
 
       });
@@ -260,7 +263,7 @@ class App extends React.Component {
       });
 
     return (
-      <div className="container-sm">
+      <div className="container-fluid container-padding">
 
         <div className="row">
           <div className="col">
